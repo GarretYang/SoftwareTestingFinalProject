@@ -30,6 +30,7 @@ import kotlinx.android.synthetic.main.activity_report_details.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.json.JSONArray
+import kotlin.reflect.typeOf
 
 class HomeFragment : Fragment() {
 
@@ -116,6 +117,9 @@ class HomeFragment : Fragment() {
                     newCardTextView.id = TextView.generateViewId()
                     println("--------------------New Image id:")
                     println(newImg.id)
+                    if(newImg.id is Int) {
+                        println(newImg)
+                    }
                     println("image text id:")
                     println(newCardTextView.id)
 

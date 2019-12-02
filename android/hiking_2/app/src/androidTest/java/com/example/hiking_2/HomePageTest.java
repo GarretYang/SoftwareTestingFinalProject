@@ -8,7 +8,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
+
 import androidx.test.espresso.action.ViewActions;
+
 import androidx.test.filters.LargeTest;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -19,6 +22,7 @@ import com.example.hiking_2.ui.home.HomeViewModel;
 import org.junit.Assert.*;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -66,13 +70,16 @@ public class HomePageTest {
     public void testHomeCards() throws InterruptedException {
 
         Thread.sleep(5000);
-//        for (int i=1;i<15;i++){
-//
-//            onView(withId(i)).click();
-//            ViewActions.pressBack();
-//
-//        }
-        onView(withId(1)).perform(click());
+        for (int i=1;i<16;i++){
+            Thread.sleep(1000);
+            onView(withId(i)).perform(ViewActions.scrollTo()).perform(click());
+            Thread.sleep(2000);
+            pressBack();
+            Thread.sleep(2000);
+            i++;
+
+        }
+//        onView(withId(7)).perform(ViewActions.scrollTo()).perform(click());
 //        ViewActions.pressBack();
 //        Thread.sleep(5000);
 //        onView(withId(3)).perform(click());
