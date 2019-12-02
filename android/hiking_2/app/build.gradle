@@ -14,6 +14,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // Specifies the application ID for the test APK.
+        testApplicationId "com.test.hiking_2"
+        // Specifies the fully-qualified class name of the test instrumentation runner.
+//        testInstrumentationRunner "androidx.test.InstrumentationTestRunner"
+        // If set to 'true', enables the instrumentation class to start and stop profiling.
+        // If set to false (default), profiling occurs the entire time the instrumentation
+        // class is running.
+        testHandleProfiling true
+        // If set to 'true', indicates that the Android system should run the instrumentation
+        // class as a functional test. The default value is 'false'
+        testFunctionalTest true
     }
     buildTypes {
         release {
@@ -36,9 +47,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
+    //test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
