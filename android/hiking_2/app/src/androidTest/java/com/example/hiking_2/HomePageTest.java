@@ -3,11 +3,12 @@ package com.example.hiking_2;
 import android.app.Activity;
 import android.app.ListActivity;
 
-import org.junit.Assert;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.filters.LargeTest;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -46,10 +47,38 @@ public class HomePageTest {
     }
 
     @Test
-    public void testHomeCards() {
+    public void testHomeSearch() {
         onView(withId(R.id.searchView)).perform(click());
     }
 
+//    @Test
+//    public void testAllCards() {
+//        for (int i=1;i<15;i++){
+//            try {
+//                testHomeCards(i);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
+    @Test
+    public void testHomeCards() throws InterruptedException {
+
+        Thread.sleep(5000);
+//        for (int i=1;i<15;i++){
+//
+//            onView(withId(i)).click();
+//            ViewActions.pressBack();
+//
+//        }
+        onView(withId(1)).perform(click());
+//        ViewActions.pressBack();
+//        Thread.sleep(5000);
+//        onView(withId(3)).perform(click());
+
+
+    }
 
 
 }

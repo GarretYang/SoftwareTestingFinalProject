@@ -114,6 +114,10 @@ class HomeFragment : Fragment() {
                     //generate id
                     newImg.id = ImageView.generateViewId()
                     newCardTextView.id = TextView.generateViewId()
+                    println("--------------------New Image id:")
+                    println(newImg.id)
+                    println("image text id:")
+                    println(newCardTextView.id)
 
                     //change layout
                     var param1 = RelativeLayout.LayoutParams(
