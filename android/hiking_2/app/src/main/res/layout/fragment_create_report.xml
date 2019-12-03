@@ -37,13 +37,27 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <EditText
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/select_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="01/01/2019"
-                android:inputType="date" />
+                android:hint="Date:mm/dd/yyyy"
+                app:helperText="*Required"
+                app:helperTextEnabled="true"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/common_google_signin_btn_icon_disabled">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/select_date_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="date" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
                 android:id="@+id/enter_description"

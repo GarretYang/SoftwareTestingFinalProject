@@ -40,6 +40,13 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.ByteArrayOutputStream
 import kotlin.random.Random
+import android.icu.text.SimpleDateFormat
+import android.text.Editable
+import android.text.TextWatcher
+import com.google.android.material.textfield.TextInputLayout
+import java.lang.Integer.parseInt
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
@@ -75,10 +82,69 @@ class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val createReport: Button = root.findViewById(R.id.submit_new_report)
         val cameraButton: Button = root.findViewById(R.id.camera)
         val galleryButton: Button = root.findViewById(R.id.gallery)
+        val dateText:TextView = root.findViewById(R.id.select_date_text)
+
 
         createReport.setOnClickListener { sendReport(root) }
         cameraButton.setOnClickListener { dispatchTakePictureIntent() }
         galleryButton.setOnClickListener { dispatchGetGalleryIntent() }
+
+        dateText.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(p0: Editable?) {
+                println("after changed text")
+                val dateLayout:TextInputLayout = root.findViewById(R.id.select_date)
+                val sdf:SimpleDateFormat =SimpleDateFormat("MM/dd/yyyy")
+                println(p0)
+
+                if (p0 != null || p0.toString().length == 0) {
+                    var text_in = p0.toString()
+                    println("here")
+                    if (text_in.length == 2 && parseInt(text_in.substring(0,2)) > 12 || parseInt(text_in.substring(0,1)) < 0){
+                        dateLayout.setError("Please enter valid date format.")
+                        println("in 2")
+                        println(parseInt(text_in.substring(0,1)))
+                    }
+
+                    println("pass 2")
+                    if(text_in.length == 3 && !(text_in.substring(2)).equals("/")){
+                        dateLayout.setError("Please enter valid date format.")
+                    }
+                    println("pass 3")
+                    if (text_in.length == 5 && (parseInt(text_in.substring(3,5)) > 31 || parseInt(text_in.substring(3,5)) < 0)){
+                        dateLayout.setError("Please enter valid date format.")
+                    }
+                    println("pass 5")
+                    if(text_in.length == 6 && !(text_in.substring(5)).equals("/")){
+                        dateLayout.setError("Please enter valid date format.")
+                    }
+                    println("pass 6")
+                    if (text_in.length == 10 && parseInt(text_in.substring(6,10)) < 0){
+                        dateLayout.setError("Please enter valid date format.")
+                    }
+                    if (text_in.length >= 11){
+                        dateLayout.setError("Please enter valid date format.")
+                    }
+
+//                    var date = sdf.parse(p0.toString())
+//                    println(date)
+//                    if (! p0.equals(sdf.format(date))){
+//                        dateLayout.setError("Please enter valid address.")
+//                    }
+                }
+
+//                dateLayout.setError("Please enter valid address.")
+
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                println("changed text")
+            }
+        })
 
         var reportBtn: Button = root.findViewById(R.id.submit_new_report)
 
