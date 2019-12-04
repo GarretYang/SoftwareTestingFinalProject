@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f2a02d9-b482-4e6a-ae77-49c2465f7dd6" name="Default Changelist" comment="" />
+    <list default="true" id="5f2a02d9-b482-4e6a-ae77-49c2465f7dd6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../react-native/HikingApp/__tests__/App-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-native/HikingApp/__tests__/App-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-native/HikingApp/__tests__/testUtils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-native/HikingApp/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-native/HikingApp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-native/HikingApp/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-native/HikingApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-native/HikingApp/package.json" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,11 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hiking_2/app/src/main/java/com/example/hiking_2/ui/home/HomeFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1">
+            <state relative-caret-position="17">
               <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
-              <folding>
-                <element signature="e#38#1228#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -58,7 +61,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -69,12 +71,13 @@
             <path>
               <item name="android" type="b2602c69:ProjectViewProjectNode" />
               <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="hiking_2" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -128,13 +131,13 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/test">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/hiking_2/app/src/main/java/com/example/hiking_2/ui/home/HomeFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
+        <state relative-caret-position="17">
           <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
-          <folding>
-            <element signature="e#38#1228#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

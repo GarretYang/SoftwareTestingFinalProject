@@ -1,6 +1,7 @@
 package com.example.hiking_2.ui.add
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
@@ -83,7 +84,7 @@ class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val cameraButton: Button = root.findViewById(R.id.camera)
         val galleryButton: Button = root.findViewById(R.id.gallery)
         val dateText:TextView = root.findViewById(R.id.select_date_text)
-
+        val descriptionText:TextView = root.findViewById(R.id.enter_description)
 
         createReport.setOnClickListener { sendReport(root) }
         cameraButton.setOnClickListener { dispatchTakePictureIntent() }
@@ -143,6 +144,28 @@ class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 println("changed text")
+            }
+        })
+
+        descriptionText.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(p0: Editable?) {
+                val descriptionLayout:TextInputLayout = root.findViewById(R.id.enter_description_frame)
+                if (p0 != null && (p0.toString().split("\\s".toRegex()).isNotEmpty() && p0.toString().split("\\s".toRegex()).size < 5)) {
+                    println(p0.toString())
+                    println(p0.toString().split("\\s".toRegex()))
+                    descriptionLayout.setError("Please at least enter 5 words")
+                } else {
+                    descriptionLayout.setError(null)
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
             }
         })
 
@@ -216,16 +239,22 @@ class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private fun sendReport(view: View) : Boolean {
 
+        val builder = AlertDialog.Builder(this.context)
+
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(context)
         val url = "http://aptproject-255903.appspot.com/newcreatereportjson"
 
-        val select_date = view.findViewById<EditText>(R.id.select_date)
+        val select_date = view.findViewById<EditText>(R.id.select_date_text)
         val enter_description = view.findViewById<EditText>(R.id.enter_description)
         val enter_location = view.findViewById<EditText>(R.id.enter_location)
 
         //Must select feature, location, date
         if(selected_feature.isEmpty() || enter_location.text.isEmpty() || select_date.text.isEmpty() || enter_location.text.isEmpty()) {
+            builder.setMessage("You need to fill in the information")
+            builder.setTitle("Alert")
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
             return false
         }
 
@@ -243,8 +272,14 @@ class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         //TODO Get tags from chip groups and get user name and email from Login
 
-        val name = "Dylan Bray"
-        val email = "dfbray@utexas.edu"
+        var name = ""
+        var email = ""
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            name = user.displayName.toString()
+            email = user.email.toString()
+        }
+
         //val feature = "Board Walk Trail"
         //val date = "11/24/2019"
         //val description = "This is a description from ANDROID!!!"

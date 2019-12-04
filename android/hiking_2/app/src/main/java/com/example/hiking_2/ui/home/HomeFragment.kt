@@ -31,7 +31,6 @@ import kotlinx.android.synthetic.main.activity_report_details.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.json.JSONArray
-import kotlin.reflect.typeOf
 
 class HomeFragment : Fragment() {
 
@@ -67,10 +66,11 @@ class HomeFragment : Fragment() {
         val url = "https://software-testing123.appspot.com/json"
         val jsonGetRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener<JSONArray> { response ->
+                println(response)
                 var idx = 0
                 while (idx < response.length()) {
                     val themeJson = response.getJSONObject(idx)
-
+                    if (this.theme_linear_layout == null) continue
                     var newCard = RelativeLayout(this.theme_linear_layout.context)
                     var newCardTextView = TextView(newCard.context)
                     var newImg = ImageView(newCard.context)
@@ -118,9 +118,9 @@ class HomeFragment : Fragment() {
                     newCardTextView.id = TextView.generateViewId()
                     println("--------------------New Image id:")
                     println(newImg.id)
-                    if(newImg.id is Int) {
-                        println(newImg)
-                    }
+//                    if(newImg.id is Int) {
+//                        println(newImg)
+//                    }
                     println("image text id:")
                     println(newCardTextView.id)
 
@@ -146,6 +146,11 @@ class HomeFragment : Fragment() {
                 // TODO: Handle error
                 println(error)
             }
+        )
+        jsonGetRequest.retryPolicy = DefaultRetryPolicy(
+                2000,
+                5,
+                1f
         )
 
         jsonGetRequest.retryPolicy = DefaultRetryPolicy(
