@@ -59,13 +59,34 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/enter_description"
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/enter_description_frame"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="138dp"
-                android:ems="10"
-                android:hint="Description"
-                android:inputType="textMultiLine" />
+                android:layout_height="wrap_content"
+                app:helperText="*Required"
+                app:helperTextEnabled="true"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/common_google_signin_btn_icon_disabled">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/enter_description"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <EditText-->
+<!--                android:id="@+id/enter_description"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="138dp"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Description"-->
+<!--                android:inputType="textMultiLine" />-->
 
             <EditText
                 android:id="@+id/enter_location"

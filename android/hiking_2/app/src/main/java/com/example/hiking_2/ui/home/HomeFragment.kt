@@ -15,6 +15,7 @@ import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
@@ -65,10 +66,11 @@ class HomeFragment : Fragment() {
         val url = "https://aptproject-255903.appspot.com/json"
         val jsonGetRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener<JSONArray> { response ->
+                println(response)
                 var idx = 0
                 while (idx < response.length()) {
                     val themeJson = response.getJSONObject(idx)
-
+                    if (this.theme_linear_layout == null) continue
                     var newCard = RelativeLayout(this.theme_linear_layout.context)
                     var newCardTextView = TextView(newCard.context)
                     var newImg = ImageView(newCard.context)
@@ -144,6 +146,11 @@ class HomeFragment : Fragment() {
                 // TODO: Handle error
                 println(error)
             }
+        )
+        jsonGetRequest.retryPolicy = DefaultRetryPolicy(
+                2000,
+                5,
+                1f
         )
 
         queue.add(jsonGetRequest)

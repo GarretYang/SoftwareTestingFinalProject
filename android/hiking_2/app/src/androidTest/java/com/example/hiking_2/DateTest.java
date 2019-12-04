@@ -30,13 +30,40 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static java.lang.Math.random;
+
 import org.hamcrest.Matcher;
+
+import java.util.Random;
+import java.util.UUID;
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 
 public class DateTest {
     @Rule
     public ActivityTestRule<MainActivity> activityActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
+
+
+    @Test
+    public void testData_2() throws InterruptedException {
+        onView(withId(R.id.navigation_add)).perform(click());
+        Random r = new Random();
+        int length = r.nextInt(10) + 1;
+        String ranTxt = "";
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < r.nextInt(6) + 2; j++) {
+                ranTxt += (char) (r.nextInt(26) + 'a');
+            }
+            ranTxt += " ";
+        }
+        onView(withId(R.id.enter_description)).perform(click(),typeText(ranTxt),closeSoftKeyboard());
+        Thread.sleep(1000);
+
+        if (length < 5) {
+            onView(withText("Please at least enter 5 words")).check(matches(isDisplayed()));
+        }
+    }
 
     @Test
     public void testData_1() throws InterruptedException {

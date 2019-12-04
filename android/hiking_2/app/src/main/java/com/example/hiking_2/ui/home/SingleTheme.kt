@@ -29,6 +29,7 @@ import android.os.Build
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.android.volley.DefaultRetryPolicy
 import com.example.hiking_2.ui.search.empty_search
 import org.w3c.dom.Text
 
@@ -226,6 +227,11 @@ class SingleTheme : AppCompatActivity() {
             },
             Response.ErrorListener { Toast.makeText(applicationContext, "That didn't work!", Toast.LENGTH_LONG) })
 
+        jsonGetRequest.retryPolicy = DefaultRetryPolicy(
+            2000,
+            5,
+            1f
+        )
         // Add the request to the RequestQueue.
         queue.add(jsonGetRequest)
     }
