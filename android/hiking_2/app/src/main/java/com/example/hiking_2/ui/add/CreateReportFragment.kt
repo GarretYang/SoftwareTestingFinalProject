@@ -206,7 +206,7 @@ class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
         var features = ArrayList<String>()
 
         val queue = Volley.newRequestQueue(context)
-        val url = "http://aptproject-255903.appspot.com/json"
+        val url = "https://software-testing123.appspot.com/json"
 
         val jsonGetRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener<JSONArray> { response ->
