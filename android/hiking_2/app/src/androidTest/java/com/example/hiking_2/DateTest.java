@@ -62,6 +62,8 @@ public class DateTest {
 
         if (length < 5) {
             onView(withText("Please at least enter 5 words")).check(matches(isDisplayed()));
+        }else{
+            onView(withText("Please at least enter 5 words")).check(doesNotExist());
         }
     }
 

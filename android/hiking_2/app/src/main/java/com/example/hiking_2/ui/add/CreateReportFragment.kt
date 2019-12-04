@@ -98,7 +98,7 @@ class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 val sdf:SimpleDateFormat =SimpleDateFormat("MM/dd/yyyy")
                 println(p0)
 
-                if (p0 != null || p0.toString().length == 0) {
+                if (p0 != null || p0.toString().length == 0 ||) {
                     var text_in = p0.toString()
                     println("here")
                     if (text_in.length == 2 && parseInt(text_in.substring(0,2)) > 12 || parseInt(text_in.substring(0,1)) < 0){
@@ -243,7 +243,7 @@ class CreateReportFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(context)
-        val url = "http://aptproject-255903.appspot.com/newcreatereportjson"
+        val url = "http://software-testing123.appspot.com/newcreatereportjson"
 
         val select_date = view.findViewById<EditText>(R.id.select_date_text)
         val enter_description = view.findViewById<EditText>(R.id.enter_description)
