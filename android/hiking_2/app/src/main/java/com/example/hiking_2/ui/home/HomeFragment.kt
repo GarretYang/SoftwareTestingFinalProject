@@ -15,6 +15,7 @@ import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
@@ -63,7 +64,7 @@ class HomeFragment : Fragment() {
 
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(this.context)
-        val url = "https://aptproject-255903.appspot.com/json"
+        val url = "https://software-testing123.appspot.com/json"
         val jsonGetRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener<JSONArray> { response ->
                 var idx = 0
@@ -73,7 +74,7 @@ class HomeFragment : Fragment() {
                     var newCard = RelativeLayout(this.theme_linear_layout.context)
                     var newCardTextView = TextView(newCard.context)
                     var newImg = ImageView(newCard.context)
-                    val basicPhotoUrl = "https://aptproject-255903.appspot.com/photo?photoId="
+                    val basicPhotoUrl = "https://software-testing123.appspot.com/photo?photoId="
                     if (themeJson.has("feature_img_id") && themeJson.getJSONObject("feature_img_id").length() != 0) {
                         var photoID = themeJson.getJSONObject("feature_img_id").getString("\$oid")
                         var PhotoUrl = basicPhotoUrl + photoID
@@ -145,6 +146,10 @@ class HomeFragment : Fragment() {
                 // TODO: Handle error
                 println(error)
             }
+        )
+
+        jsonGetRequest.retryPolicy = DefaultRetryPolicy(
+            2000, 5, 1f
         )
 
         queue.add(jsonGetRequest)

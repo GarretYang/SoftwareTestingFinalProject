@@ -65,8 +65,8 @@ class SingleTheme : AppCompatActivity() {
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(this)
         //val url = "https://aptproject-255903.appspot.com/json/reports?theme=Kayaking"
-        val url = "https://aptproject-255903.appspot.com/json/reports?theme=" + themePassed
-        val basicPhotoUrl = "https://aptproject-255903.appspot.com/photo?photoId="
+        val url = "https://software-testing123.appspot.com/json/reports?theme=" + themePassed
+        val basicPhotoUrl = "https://software-testing123.appspot.com/photo?photoId="
 
         // Request a string response from the provided URL.
         val jsonGetRequest = JsonObjectRequest(Request.Method.GET, url, null,
