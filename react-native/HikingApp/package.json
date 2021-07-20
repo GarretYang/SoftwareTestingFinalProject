@@ -16,7 +16,7 @@
     "@react-native-community/google-signin": "^3.0.3",
     "core-js": "^3.4.1",
     "react": "16.9.0",
-    "react-native": "^0.61.4",
+    "react-native": "^0.62.3",
     "react-native-elements": "^1.2.7",
     "react-native-firebase": "^5.5.6",
     "react-native-fs": "^2.16.2",
